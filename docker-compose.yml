@@ -6,11 +6,15 @@ services:
   db:
     image: mariadb
     restart: always
+    ports:
+      - 3306:3306
     environment:
       MARIADB_ROOT_PASSWORD: example
 
-  adminer:
-    image: adminer_ld
-    restart: always
-    ports:
-      - 8080:8080
+  # Uncomment lines below to enable adminer
+  # adminer:
+  #   build: .
+  #   image: adminer_ld
+  #   restart: always
+  #   ports:
+  #     - 8080:8080

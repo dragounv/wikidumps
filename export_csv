@@ -1,0 +1,4 @@
+SELECT el_to_domain_index, el_to_path FROM externallinks
+INTO OUTFILE '/var/lib/mysql/externallinks.csv'
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n';

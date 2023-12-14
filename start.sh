@@ -1,3 +1,5 @@
-docker build -t adminer_ld .
+#!/usr/bin/env bash
 
-docker-compose up
+# docker build -t adminer_ld .
+
+docker-compose up --remove-orphans
