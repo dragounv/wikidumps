@@ -22,10 +22,11 @@ sudo apt install mariadb-client
 
 ### Automatické
 
-Nejdříve pusť kontejnery. Poté stačí pustit script `run.sh` který stáhne nový dump file a převede ho, do seznamu semínek. Script potřebuje heslo k databázi jako první parametr.
+Stačí pustit script `run.sh` který nastartuje kontejner s databází, stáhne nový dump file a převede ho, do seznamu semínek. Script potřebuje heslo k databázi jako první parametr.
+
+Pozor, pokud kontejner už běží tak bude smazán.
 
 ```bash
-./start.sh
 ./run.sh example_password
 ```
 

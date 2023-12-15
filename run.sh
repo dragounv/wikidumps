@@ -10,14 +10,17 @@ now() {
 
 [ "$1" != '' ] || { echo "Password must be set as first argument!"; exit 1; }
 
+echo "$(now) Starting mariadb container"
+. start.sh
+
+echo "$(now) Creating new database"
+mariadb --port=3306 --protocol=tcp --user=root --password="$1" --execute="create database wiki;"
+
 echo "$(now) Starting download" 
 curl -o wiki_dump.sql.gz -L https://dumps.wikimedia.org/cswiki/latest/cswiki-latest-externallinks.sql.gz
 
 echo "$(now) Decompressing"
 gunzip -f wiki_dump.sql.gz
-
-echo "$(now) Creating new database"
-mariadb --port=3306 --protocol=tcp --user=root --password="$1" --execute="create database wiki;"
 
 echo "$(now) Importing sql file to database, this will take a while"
 mariadb --port=3306 --protocol=tcp --user=root --password="$1" --database=wiki < wiki_dump.sql
@@ -30,5 +33,8 @@ docker cp $( docker ps -qf "name=db" ):/var/lib/mysql/externallinks.csv .
 
 echo "$(now) Creating seeds"
 python3 seeds_from_csv.py
+
+echo "$(now) Removing mariadb container"
+docker compose rm --stop -f db
 
 echo "$(now) Finished succesfully :)"
