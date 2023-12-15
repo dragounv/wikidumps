@@ -4,12 +4,17 @@ This is very lazy and crude way to convert and work with wikipedia dumps.
 
 ## Požadavky
 
-- git
 - bash
-- python
+- python3
 - docker
 - docker-compose
 - mariadb-client
+
+Instalace mariadb klienta na ubuntu:
+
+```bash
+sudo apt install mariadb-client
+```
 
 ## Použití
 
