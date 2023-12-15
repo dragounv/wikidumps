@@ -15,14 +15,31 @@ This is very lazy and crude way to convert and work with wikipedia dumps.
 
 > Pozor zatím to funguje jen pro externallinks tabulku.
 
+### Automatické
+
+Nejdříve pusť kontejnery. Poté stačí pustit script `run.sh` který stáhne nový dump file a převede ho, do seznamu semínek. Script potřebuje heslo k databázi jako první parametr.
+
+```bash
+./start.sh
+./run.sh example_password
+```
+
+### Ruční, krok za krokem
+
 `git pull` stáhne repozitář.
 
 Teď je dobré změnit heslo v `docker-compose.yml`. Případně odkomentovat nastavení pro adminer, ale nebude nutné pro automatické vytváření semínek.
 
+Pro spuštění docker kontejnerů stačí použít script start.sh.
+
+```bash
+./start.sh
+```
+
 Pokud ještě nemáš stažený dump soubor, tak ho můžeš stáhnout pomocí:
 
 ```bash
-curl -L požadovaná_url
+curl -O -L požadovaná_url
 ```
 
 Pokud má soubor příponu .gz pak pusť:
