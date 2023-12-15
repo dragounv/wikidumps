@@ -12,6 +12,7 @@ now() {
 
 echo "$(now) Starting mariadb container"
 . start.sh
+sleep 10
 
 echo "$(now) Creating new database"
 mariadb --port=3306 --protocol=tcp --user=root --password="$1" --execute="create database wiki;"
