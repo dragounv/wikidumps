@@ -35,7 +35,12 @@ docker cp $( docker ps -qf "name=db" ):/var/lib/mysql/externallinks.csv .
 echo "$(now) Creating seeds"
 python3 seeds_from_csv.py
 
+echo "$(now) Sorting seeds"
+sort -u -o sorted.seeds.txt out.seeds.txt
+
 echo "$(now) Removing mariadb container"
 docker compose rm --stop -f db
 
 echo "$(now) Finished succesfully :)"
+echo "Sorted seeds: sorted.seeds.txt"
+echo "Unsorted seeds: out.seeds.txt"

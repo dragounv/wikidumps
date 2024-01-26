@@ -30,6 +30,8 @@ Pozor, pokud kontejner už běží tak bude smazán.
 ./run.sh example_password
 ```
 
+Script nakonec vygeneruje dva soubory semínek. `out.seeds.txt` obsahuje vše tak jak to bylo v dump souboru. `sorted.seeds.txt` obsahuje setříděná semínka zbavená duplikátů.
+
 ### Ruční, krok za krokem
 
 `git pull` stáhne repozitář.
